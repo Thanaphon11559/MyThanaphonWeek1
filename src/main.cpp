@@ -1,26 +1,65 @@
 #include <Arduino.h>
+#define LED_PIN1 0
+#define LED_PIN2 4
+#define LED_PIN3 16
+#define LED_PIN4 17
+#define LED_PIN5 5
+#define LED_PIN6 18
+#define LED_PIN7 19
+#define LED_PIN8 23
+#define SENSOR_pin 36
 
-void setup() {
-pinMode(0, OUTPUT);
-pinMode(4, OUTPUT);
-pinMode(16, OUTPUT);
-pinMode(17, OUTPUT);
-pinMode(5, OUTPUT);
 
-
+void setup(){
+   pinMode(LED_PIN1, OUTPUT);
+   pinMode(LED_PIN2, OUTPUT);
+   pinMode(LED_PIN3, OUTPUT);
+   pinMode(LED_PIN4, OUTPUT);
+   pinMode(LED_PIN5, OUTPUT);
+   pinMode(LED_PIN6, OUTPUT);
+   pinMode(LED_PIN7, OUTPUT);
+   pinMode(LED_PIN8, OUTPUT);
 }
-void loop(){
-    digitalWrite(0, HIGH);
-    digitalWrite(17,HIGH);
-    delay(2000);
-    digitalWrite(0,LOW);
-    digitalWrite(17,LOW);
-    digitalWrite(4,HIGH);
-    digitalWrite(16,HIGH);
-    delay(2000);
-    digitalWrite(0,HIGH);
-    digitalWrite(17,HIGH);
-    digitalWrite(4,LOW);
-    digitalWrite(16,LOW);
+void loop() {
+ int sensorValue = analogRead(SENSOR_pin);
 
+ if(sensorValue >=0 && sensorValue <=500) {
+    digitalWrite(LED_PIN1,1);
+    digitalWrite(LED_PIN2,0);
+    digitalWrite(LED_PIN3,0);
+    digitalWrite(LED_PIN4,0);
+    digitalWrite(LED_PIN5,0);
+    digitalWrite(LED_PIN6,0);
+    digitalWrite(LED_PIN7,0);
+    digitalWrite(LED_PIN8,0);    
+ } else if (sensorValue >= 501 && sensorValue <=1000) {
+    digitalWrite(LED_PIN1,1);
+    digitalWrite(LED_PIN2,1);
+    digitalWrite(LED_PIN3,1);
+    digitalWrite(LED_PIN4,0);
+    digitalWrite(LED_PIN5,0);
+    digitalWrite(LED_PIN6,0);
+    digitalWrite(LED_PIN7,0);
+    digitalWrite(LED_PIN8,0);
+ }  else if (sensorValue >= 1001  && sensorValue<=2000) {
+    digitalWrite(LED_PIN1,1);
+    digitalWrite(LED_PIN2,1);
+    digitalWrite(LED_PIN3,1);
+    digitalWrite(LED_PIN4,1);
+    digitalWrite(LED_PIN5,1);
+    digitalWrite(LED_PIN6,0);
+    digitalWrite(LED_PIN7,0);
+    digitalWrite(LED_PIN8,0);
+ } else  {
+    digitalWrite(LED_PIN1,1);
+    digitalWrite(LED_PIN2,1);
+    digitalWrite(LED_PIN3,1);
+    digitalWrite(LED_PIN4,1);
+    digitalWrite(LED_PIN5,1);
+    digitalWrite(LED_PIN6,1);
+    digitalWrite(LED_PIN7,1);
+    digitalWrite(LED_PIN8,1);
+ 
 }
+}
+ 
